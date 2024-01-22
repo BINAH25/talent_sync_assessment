@@ -1,16 +1,14 @@
 from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import *
 from django.contrib.auth import authenticate
-from rest_framework.permissions import AllowAny
 from .utils import get_all_user_permissions
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
-
 
 def get_auth_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -53,5 +51,26 @@ class SignUpView(APIView):
                 "message": serializer.errors  
             }
            return Response(error_response, status=status.HTTP_400_BAD_REQUEST)
+
+
+# create post and get all created posts
+class PostListCreateAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            error_response = {
+                "message": serializer.errors  
+            }
+            return Response(error_response, status=status.HTTP_400_BAD_REQUEST)
 
 
