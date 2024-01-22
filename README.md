@@ -18,3 +18,5 @@ The project includes a well-defined data model that represents blog posts.
 Each post comprises a title, content, author, and a timestamp for tracking post creation.
 # RESTful Endpoints
 The API adheres to RESTful principles with clear and concise endpoints for user authentication and blog post management.
+git clone https://github.com/your-username/django-blogging-api.git
+cd django-blogging-api
