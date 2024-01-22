@@ -79,7 +79,7 @@ class PostListCreateAPIView(APIView):
 
 # get post detail
 class PostDetailAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,CanViewPostPermission,CanUpdatePostPermission,CanDeletePostPermission]
 # get the post object model
     def get_object(self, pk):
         try:
@@ -119,7 +119,7 @@ class PostDetailAPIView(APIView):
     
     
     
-    
+# assign permission or authorization to the user     
 class AssignPermissions(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
@@ -140,7 +140,7 @@ class AssignPermissions(APIView):
 
         return Response({"message": "Permissions assigned successfully"}, status=status.HTTP_200_OK)
 
-
+# revoke the assigned permission or authorization of the user     
 class RevokePermissions(APIView):
     permission_classes = [IsAuthenticated]
 
