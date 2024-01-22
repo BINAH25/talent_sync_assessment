@@ -79,7 +79,7 @@ class PostListCreateAPIView(APIView):
 
 # get post detail
 class PostDetailAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,CanViewPostPermission,CanUpdatePostPermission,CanDeletePostPermission]
 # get the post object model
     def get_object(self, pk):
         try:
@@ -124,21 +124,14 @@ class AssignPermissions(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
         user_id = request.data.get('user_id')
-        permissions = request.data.get('permissions', [])
-
         try:
             user = User.objects.get(pk=user_id)
             user.is_staff = True  
             user.is_superuser = True  
+            user.save()
+
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
-        for permission_codename in permissions:
-            try:
-                permission = Permission.objects.get(codename=permission_codename)
-                user.user_permissions.add(permission)
-            except Permission.DoesNotExist:
-                return Response({"message": f"Permission '{permission_codename}' not found"}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({"message": "Permissions assigned successfully"}, status=status.HTTP_200_OK)
 
@@ -148,22 +141,14 @@ class RevokePermissions(APIView):
 
     def post(self, request, format=None):
         user_id = request.data.get('user_id')
-        permissions = request.data.get('permissions', [])
 
         try:
             user = User.objects.get(pk=user_id)
             user.is_staff = False  
-            user.is_superuser = False  
+            user.is_superuser = True  
             user.save()
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
-        for permission_codename in permissions:
-            try:
-                permission = Permission.objects.get(codename=permission_codename)
-                user.user_permissions.remove(permission)  
-            except Permission.DoesNotExist:
-                return Response({"message": f"Permission '{permission_codename}' not found"}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({"message": "Permissions revoked successfully"}, status=status.HTTP_200_OK)
 
