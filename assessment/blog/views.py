@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate
 from .utils import get_all_user_permissions
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.http import Http404
 
 # Create your views here.
 
@@ -73,4 +74,45 @@ class PostListCreateAPIView(APIView):
             }
             return Response(error_response, status=status.HTTP_400_BAD_REQUEST)
 
+# get post detail
+class PostDetailAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+# get the post object model
+    def get_object(self, pk):
+        try:
+            return Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            raise Http404("Post not found")
 
+        
+# retrieve a single post by id using primary key (pk)
+    def get(self, request, pk):
+        post = self.get_object(pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+    
+# update a post by id using primary key (pk)
+    def put(self, request, pk):
+        post = self.get_object(pk)
+        serializer = PostSerializer(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            error_response = {
+                "message": serializer.errors  
+            }
+            return Response(error_response, status=status.HTTP_400_BAD_REQUEST)
+
+    
+# delete a post by id using primary key (pk)
+    def delete(self, request, pk):
+        post = self.get_object(pk)
+        post.delete()
+        success_response = {
+            "message": "post deleted successfully" 
+        }
+        return Response(success_response,status=200)
+    
+    
+        
