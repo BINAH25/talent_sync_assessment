@@ -79,7 +79,7 @@ class PostListCreateAPIView(APIView):
 
 # get post detail
 class PostDetailAPIView(APIView):
-    permission_classes = [IsAuthenticated,CanViewPostPermission,CanUpdatePostPermission,CanDeletePostPermission]
+    permission_classes = [IsAuthenticated]
 # get the post object model
     def get_object(self, pk):
         try:
