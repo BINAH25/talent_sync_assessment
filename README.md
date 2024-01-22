@@ -71,6 +71,20 @@ Django 5.0.1
 <img width="1039" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/1a00d02a-e2ec-4b56-aac8-e2f3287c608c">
 ### Fields for creating a post
 <img width="514" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/b9916860-9f07-446e-b65d-42bb321c36f3">
+### getting all posts
+<img width="1019" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/0b4b9acf-79cd-4bc4-ac0a-9b72d6169735">
+### retrieve  a post
+<img width="976" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/47603df2-66e5-45a5-bbe5-53979bdfc8dd">
+### delete a post
+<img width="940" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/daa637fe-5b7c-40e7-9b03-45e8324bcb09">
+### give permission to a user
+<img width="994" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/3d741dc7-7d5e-40c5-bd96-824f9118e4d9">
+### revoke user permission 
+<img width="1029" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/f4bf0a30-4a9a-4855-9009-ec5955dc8312">
+
+
+
+
 
 
 
