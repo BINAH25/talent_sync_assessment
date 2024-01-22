@@ -11,7 +11,7 @@ class CanViewPostPermission(permissions.BasePermission):
     
 class CanUpdatePostPermission(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user.has_perm("setup.update_post")
+        return request.user.has_perm("setup.change_post")
     
 class CanDeletePostPermission(permissions.BasePermission):
     def has_permission(self, request, view):

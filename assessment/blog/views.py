@@ -128,6 +128,8 @@ class AssignPermissions(APIView):
 
         try:
             user = User.objects.get(pk=user_id)
+            user.is_staff = True  
+            user.is_superuser = True  
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
@@ -150,6 +152,9 @@ class RevokePermissions(APIView):
 
         try:
             user = User.objects.get(pk=user_id)
+            user.is_staff = False  
+            user.is_superuser = False  
+            user.save()
         except User.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
