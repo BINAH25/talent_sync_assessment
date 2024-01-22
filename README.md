@@ -18,9 +18,17 @@ The project includes a well-defined data model that represents blog posts.
 Each post comprises a title, content, author, and a timestamp for tracking post creation.
 ### RESTful Endpoints
 The API adheres to RESTful principles with clear and concise endpoints for user authentication and blog post management.
+## Language and Libraries
+Python 3.9
+Django 5.0.1
 ## Usage Guidelines
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/django-blogging-api.git
-   cd django-blogging-api
+   git clone https://github.com/BINAH25/talent_sync_assessment.git
+   cd assessment
+2. **Install the requires packages:**
+   ```bash
+   pip install -r requirements.txt
+   python manage.py makemigrations
+   python manage.py migrate
