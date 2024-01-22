@@ -78,9 +78,9 @@ Django 5.0.1
 ### delete a post
 <img width="940" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/daa637fe-5b7c-40e7-9b03-45e8324bcb09">
 ### give permission to a user
-<img width="994" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/3d741dc7-7d5e-40c5-bd96-824f9118e4d9">
+<img width="986" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/90d39980-4251-4c68-b6d5-9c8ef1e8d00f">
 ### revoke user permission 
-<img width="1029" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/f4bf0a30-4a9a-4855-9009-ec5955dc8312">
+<img width="962" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/10b66d6d-923a-4caa-b726-3dbf8da43e24">
 
 
 
