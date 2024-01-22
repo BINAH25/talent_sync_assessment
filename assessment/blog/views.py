@@ -115,4 +115,51 @@ class PostDetailAPIView(APIView):
         return Response(success_response,status=200)
     
     
+    
+    
+class AssignPermissions(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated,CanManageSetupPermission]
+    def post(self, request, format=None):
+        user_id = request.data.get('user_id')
+        permissions = request.data.get('permissions', [])
+
+        try:
+            user = User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        for permission_codename in permissions:
+            try:
+                permission = Permission.objects.get(codename=permission_codename)
+                user.user_permissions.add(permission)
+            except Permission.DoesNotExist:
+                return Response({"message": f"Permission '{permission_codename}' not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"message": "Permissions assigned successfully"}, status=status.HTTP_200_OK)
+
+
+class RevokePermissions(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated, CanManageSetupPermission]
+
+    def post(self, request, format=None):
+        user_id = request.data.get('user_id')
+        permissions = request.data.get('permissions', [])
+
+        try:
+            user = User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        for permission_codename in permissions:
+            try:
+                permission = Permission.objects.get(codename=permission_codename)
+                user.user_permissions.remove(permission)  
+            except Permission.DoesNotExist:
+                return Response({"message": f"Permission '{permission_codename}' not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"message": "Permissions revoked successfully"}, status=status.HTTP_200_OK)
+
+    
         
