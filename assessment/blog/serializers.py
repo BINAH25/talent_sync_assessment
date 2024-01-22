@@ -7,7 +7,8 @@ class UserLoginSerializer(serializers.ModelSerializer):
         fields = [
             'username',
             'last_name',
-            'first_name'
+            'first_name',
+            'id'
         ]
         
 class UserRegistrationSerializer(serializers.ModelSerializer):

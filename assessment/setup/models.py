@@ -8,9 +8,9 @@ class SetupPerm(models.Model):
         default_permissions = ()
         permissions = [
 
-            ('create_post', 'Can Create Post'),
+            ('add_post',    'Can Create Post'),
             ('view_post',   'Can View Post'),
-            ('update_post', 'Can Update Post'),
+            ('change_post', 'Can Update Post'),
             ('delete_post', 'Can Delete Post'), 
             
         ]

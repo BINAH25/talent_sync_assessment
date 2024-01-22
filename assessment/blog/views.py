@@ -8,6 +8,9 @@ from .utils import get_all_user_permissions
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.http import Http404
+from .permissions import *
+from django.contrib.auth.models import Permission
+
 
 # Create your views here.
 
@@ -56,7 +59,7 @@ class SignUpView(APIView):
 
 # create post and get all created posts
 class PostListCreateAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,CanCreatePostPermission,CanViewPostPermission]
 
     def get(self, request):
         posts = Post.objects.all()
@@ -118,8 +121,7 @@ class PostDetailAPIView(APIView):
     
     
 class AssignPermissions(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated,CanManageSetupPermission]
+    permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
         user_id = request.data.get('user_id')
         permissions = request.data.get('permissions', [])
@@ -140,8 +142,7 @@ class AssignPermissions(APIView):
 
 
 class RevokePermissions(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated, CanManageSetupPermission]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
         user_id = request.data.get('user_id')
