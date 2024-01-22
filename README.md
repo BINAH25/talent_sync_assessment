@@ -61,8 +61,17 @@ Django 5.0.1
    ```bash
    http://127.0.0.1:8000/api/post/post_id/
    (e.g http://127.0.0.1:8000/api/post/1/)
-10. **assign and revoke a user permission endpoint:**
+9. **assign and revoke a user permission endpoint:**
    ```bash
    http://127.0.0.1:8000/api/post/assign-permissions/
    http://127.0.0.1:8000/api/post/revoke-permissions/
+### Fields for user registration
+<img width="512" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/7ca364ea-4c11-4fa5-b4e4-4d0ebd723209">
+### Fields for user login
+<img width="1039" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/1a00d02a-e2ec-4b56-aac8-e2f3287c608c">
+### Fields for creating a post
+<img width="514" alt="image" src="https://github.com/BINAH25/talent_sync_assessment/assets/81252456/b9916860-9f07-446e-b65d-42bb321c36f3">
+
+
+
 
