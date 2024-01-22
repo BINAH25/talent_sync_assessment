@@ -26,9 +26,43 @@ Django 5.0.1
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/BINAH25/talent_sync_assessment.git
-   cd assessment
-2. **Install the requires packages:**
+   cd talent_sync_assessment
+   
+2. **Create Virtual Environment:**
    ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+3. **Install the requires packages:**
+   ```bash
+   cd assessment
    pip install -r requirements.txt
    python manage.py makemigrations
    python manage.py migrate
+4. **User registration endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/sign_up/
+5. **User login endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/login/
+
+6. **Create post  and get all posts endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/post/
+7. **get a post endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/post/post_id/
+   (e.g http://127.0.0.1:8000/api/post/1/)
+8. **update a post endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/post/post_id/
+   (e.g http://127.0.0.1:8000/api/post/1/)
+9. **delete a post endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/post/post_id/
+   (e.g http://127.0.0.1:8000/api/post/1/)
+10. **assign and revoke a user permission endpoint:**
+   ```bash
+   http://127.0.0.1:8000/api/post/assign-permissions/
+   http://127.0.0.1:8000/api/post/revoke-permissions/
+
